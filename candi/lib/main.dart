@@ -2,10 +2,10 @@ import 'package:candi/data/candi_data.dart';
 import 'package:flutter/material.dart';
 import 'package:candi/screens/detail_screen.dart';
 
+
 void main() {
   runApp(const MainApp());
 }
-
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
