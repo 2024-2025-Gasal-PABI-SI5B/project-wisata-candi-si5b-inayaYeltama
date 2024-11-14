@@ -36,12 +36,34 @@ class DetailScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
-                    onPressed: (){}, icon: const Icon(Icons.arrow_back)
+                    onPressed: () {
+                      Navigator.pop(context); // Add navigation functionality
+                    },
+                    icon: const Icon(Icons.arrow_back),
                   ),
                 ),
               ),
             ],
-          )
+          ),
+          // DETAIL INFO
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                // info atas
+                const SizedBox(height: 16,),
+                Row(
+                  children:[
+                    Text(candi.name),
+                    IconButton(onPressed: (){},
+                     icon: const Icon(Icons.favorite_border)),
+                  ],
+                )
+                // info tengah 
+                //info bawah)
+              ],
+            ),
+          ),
         ],
       ),
     );
