@@ -10,10 +10,23 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   // TODO: 1. Deklarasikan variabel yang dibutuhkan
   bool isSignedIn = true;
-  String fullName = '';
-  String userName = 'Inaya Yeltama';
+  String fullName = 'Inaya Yeltama';
+  String userName = 'inayaayt';
   int favoriteCandiCount = 0;
 
+  //  TODO : 5. Implementasi fungsi SignIn
+  void SignIn(){
+    setState(() {
+      isSignedIn = !isSignedIn;
+    });
+  }
+
+  // TODO: 6. Implementasi fungsi SignOut
+  void signout(){
+    setState((){
+    isSignedIn = !isSignedIn;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 // TODO: 3. Buat bagian Profile Info (isinya info profil)
+                // Baris 1 Pengguna
                 const SizedBox(
                   height: 30,
                 ),
@@ -75,35 +89,136 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width /3,
+                      width: MediaQuery.of(context).size.width / 3,
                       child: Row(
                         children: [
                           const Icon(
                             Icons.lock,
                             color: Colors.amber,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8,
+                          ),
+                          const Text(
+                            'Pengguna',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
-                            Text(
-                              'Pengguna',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
+                          ),
                         ],
                       ),
                     ),
-                  Expanded(
-                    child: Text(
-                      ':$userName',
-                    style: TextStyle(fontSize: 18),
-                    ))
-
+                    Expanded(
+                      child: Text(
+                        ': $userName',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ],
+                ),
+                // Baris 2 Nama
+                const SizedBox(
+                  height: 4,
+                ),
+                Divider(
+                  color: Colors.deepPurple[100],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 3,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.person,
+                            color: Colors.blue,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          const Text(
+                            'Nama',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        ': $fullName',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    if (isSignedIn) const Icon(Icons.edit),
+                  ],
+                ),
+                // Baris 3 Favorite
+                const SizedBox(
+                  height: 4,
+                ),
+                Divider(
+                  color: Colors.deepPurple[100],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 3,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          const Text(
+                            'Favorite',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        ': $favoriteCandiCount',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
                   ],
                 ),
                 // TODO: 4. Buat bagian Profile Action (isinya tombol signin/signout)
+                const SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  color: Colors.deepPurple[100],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                isSignedIn
+                    ? TextButton(
+                        onPressed: signout,
+                        child: const Text('Sign Out'),
+                      )
+                    : TextButton(
+                        onPressed: SignIn,
+                        child: const Text('Sign In'),
+                      ),
               ],
             ),
           ),
